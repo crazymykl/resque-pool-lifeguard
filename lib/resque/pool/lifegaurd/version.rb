@@ -1,6 +1,6 @@
 module Resque
-  module Pool
-    module Lifegaurd
+  class Pool
+    class Lifegaurd
       VERSION = "0.1.0"
     end
   end

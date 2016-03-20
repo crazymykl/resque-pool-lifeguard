@@ -1,0 +1,67 @@
+<% pools = Resque::Pool::Lifegaurd.all_pools %>
+<% workers = Resque.workers.group_by { |w| [w.hostname, w.queues] } %>
+
+<style>
+#main form.queues {
+  float: none;
+  margin: 0;
+}
+
+form.queues input[type="number"] {
+  width: 35px;
+}
+</style>
+
+<h1 class='wi'>Worker Pools</h1>
+<p class='intro'>The worker pools listed below are all registered as active on your system.</p>
+
+<% pools.each do |host, pool| %>
+<% if pools.length > 1 %>
+<h2 class='hostname'><%= host %></h2>
+<% end %>
+<table class='pool'>
+  <tr>
+    <th>Queues</th>
+    <th>Provisioned</th>
+    <th>Running</th>
+    <th>Working</th>
+    <th>Idle</th>
+  </tr>
+  <% pool.each do |queues, count| %>
+  <% split_queues = queues.split ',' %>
+  <% my_workers = workers.fetch [host, split_queues], [] %>
+  <tr>
+    <td class='queues'>
+      <% split_queues.each do |q| %>
+      <a class="queue-tag" href="<%= u "/queues/#{q}" %>"><%= q %></a>
+      <% end %>
+    </td>
+    <td>
+      <form class='update queues' action="<%= u "/pools/#{host}" %>" method="POST">
+        <input name="queues" type="hidden" value="<%= queues %>">
+        <input name="count" type="number" min="0" value="<%= count %>">
+        <input type="submit" value="Update">
+      </form>
+    </td>
+    <td><%= my_workers.count %></td>
+    <td><%= my_workers.count &:working? %></td>
+    <td><%= my_workers.count &:idle? %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <th>Add new...</th>
+    <td colspan="4">
+      <form class='new queues' action="<%= u "/pools/#{host}" %>" method="POST">
+        <input name="queues" placeholder="Enter queue name(s)">
+        <input name="count" type="number" min="0" value="1">
+        <input type="submit" value="Create">
+      </form>
+    </td>
+  </tr>
+</table>
+
+<% end %>
+
+
+
+<%= poll %>
