@@ -1,3 +1,4 @@
+require 'resque/pool'
 require "resque/pool/lifegaurd/version"
 
 module Resque
@@ -32,13 +33,14 @@ module Resque
       end
 
       def reset!
-        Resque.redis.del pool_key, key
+        Resque.redis.hdel pool_key, hostname
       end
 
       def values
         Resque.decode Resque.redis.hget pool_key, hostname
       rescue Resque::Helpers::DecodeException
         reset!
+        nil
       end
 
       def values= values
@@ -53,8 +55,8 @@ module Resque
         self.values = if count.zero?
           values.to_h.tap do |vals| vals.delete queues end
         else
-           values.to_h.merge queues => count
-         end
+          values.to_h.merge queues => count
+        end
       end
 
       private

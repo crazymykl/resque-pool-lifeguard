@@ -1,4 +1,4 @@
-# Resque::Pool::Lifegaurd
+# Resque::Pool::Lifegaurd [![Build Status](https://travis-ci.org/crazymykl/resque-pool-lifegaurd.svg?branch=master)](https://travis-ci.org/crazymykl/resque-pool-lifegaurd)
 
 Resque pool is a great way to manage a set of resque workers. However, sometimes one wants to spin up a bunch of workers temporarily, or to conserve resources during times of heavy load.
 
@@ -20,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-Add `require 'resque/pool/lifegaurd/tasks'` to your Rakefile (as well as the existing `resque-pool` config)
+Add `require 'resque/pool/lifegaurd/tasks'` to your Rakefile (as well as the existing `resque-pool` config).
+
 Add `require 'resque/pool/lifegaurd/server'` to where you mount your resque-web GUI.
 
 ## Development
