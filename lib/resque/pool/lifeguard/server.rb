@@ -1,9 +1,9 @@
 require 'resque/server'
-require 'resque/pool/lifegaurd'
+require 'resque/pool/lifeguard'
 
 module Resque
   class Pool
-    class Lifegaurd
+    class Lifeguard
       module Server
         VIEW_PATH = File.join(__dir__, 'server', 'views')
 
@@ -15,7 +15,7 @@ module Resque
           app.post '/pools/:host' do
             host, queues, count = params.values_at(*%i[host queues count])
 
-            Lifegaurd.new(hostname: host)[queues] = Integer(count)
+            Lifeguard.new(hostname: host)[queues] = Integer(count)
             redirect u :pools
           end
 

@@ -1,9 +1,9 @@
 require 'resque/pool'
-require "resque/pool/lifegaurd/version"
+require "resque/pool/lifeguard/version"
 
 module Resque
   class Pool
-    class Lifegaurd
+    class Lifeguard
 
       def initialize hostname: Socket.gethostname, defaults: -> (env) { {} }
         @defaults = defaults
@@ -11,7 +11,7 @@ module Resque
       end
 
       def self.pool_key
-        'resque-pool-lifegaurd'
+        'resque-pool-lifeguard'
       end
 
       def self.all_pools

@@ -1,4 +1,4 @@
-# Resque::Pool::Lifegaurd [![Build Status](https://travis-ci.org/crazymykl/resque-pool-lifegaurd.svg?branch=master)](https://travis-ci.org/crazymykl/resque-pool-lifegaurd)
+# Resque::Pool::Lifeguard [![Build Status](https://travis-ci.org/crazymykl/resque-pool-lifeguard.svg?branch=master)](https://travis-ci.org/crazymykl/resque-pool-lifeguard)
 
 Resque pool is a great way to manage a set of resque workers. However, sometimes one wants to spin up a bunch of workers temporarily, or to conserve resources during times of heavy load.
 
@@ -7,7 +7,7 @@ Resque pool is a great way to manage a set of resque workers. However, sometimes
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'resque-pool-lifegaurd'
+gem 'resque-pool-lifeguard'
 ```
 
 And then execute:
@@ -16,13 +16,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install resque-pool-lifegaurd
+    $ gem install resque-pool-lifeguard
 
 ## Usage
 
-Add `require 'resque/pool/lifegaurd/tasks'` to your Rakefile (as well as the existing `resque-pool` config).
+Add `require 'resque/pool/lifeguard/tasks'` to your Rakefile (as well as the existing `resque-pool` config).
 
-Add `require 'resque/pool/lifegaurd/server'` to where you mount your resque-web GUI.
+Add `require 'resque/pool/lifeguard/server'` to where you mount your resque-web GUI.
 
 ## Development
 
@@ -32,7 +32,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/crazymykl/resque-pool-lifegaurd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/crazymykl/resque-pool-lifeguard. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

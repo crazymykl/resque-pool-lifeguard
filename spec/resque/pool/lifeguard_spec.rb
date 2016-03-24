@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Resque::Pool::Lifegaurd do
+describe Resque::Pool::Lifeguard do
 
   before :each do
     Resque.redis.flushall
@@ -10,7 +10,7 @@ describe Resque::Pool::Lifegaurd do
   let(:pool_key) { subject.class.pool_key }
 
   it 'has a version number' do
-    expect(Resque::Pool::Lifegaurd::VERSION).not_to be nil
+    expect(Resque::Pool::Lifeguard::VERSION).not_to be nil
   end
 
   context "getting and setting" do

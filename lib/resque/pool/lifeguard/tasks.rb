@@ -1,18 +1,18 @@
 require 'resque/tasks'
 require 'resque/pool/tasks'
-require 'resque/pool/lifegaurd'
+require 'resque/pool/lifeguard'
 
 namespace :resque do
 
   namespace :pool do
      # resque pool config.  e.g. after_prefork connection handling
-    task :lifegaurd do
+    task :lifeguard do
       defaults = FileOrHashLoader.new
-      Resque::Pool.config_loader = Resque::Pool::Lifegaurd.new defaults: defaults
-      Resque::Pool.log "Resque Pool Lifegaurd on Duty"
+      Resque::Pool.config_loader = Resque::Pool::Lifeguard.new defaults: defaults
+      Resque::Pool.log "Resque Pool Lifeguard on Duty"
     end
 
-    task setup: :lifegaurd
+    task setup: :lifeguard
 
   end
 

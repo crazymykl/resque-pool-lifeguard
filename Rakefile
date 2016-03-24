@@ -1,6 +1,6 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
-require 'resque/pool/lifegaurd/tasks'
+require 'resque/pool/lifeguard/tasks'
 
 RSpec::Core::RakeTask.new(:spec)
 

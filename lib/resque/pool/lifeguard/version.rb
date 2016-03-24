@@ -1,7 +1,7 @@
 module Resque
   class Pool
-    class Lifegaurd
-      VERSION = "0.1.3"
+    class Lifeguard
+      VERSION = "0.2.0"
     end
   end
 end

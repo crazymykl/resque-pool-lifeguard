@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'resque/pool/lifegaurd/version'
+require 'resque/pool/lifeguard/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "resque-pool-lifegaurd"
-  spec.version       = Resque::Pool::Lifegaurd::VERSION
+  spec.name          = "resque-pool-lifeguard"
+  spec.version       = Resque::Pool::Lifeguard::VERSION
   spec.authors       = ["Mike MacDonald"]
   spec.email         = ["crazymykl@gmail.com"]
 
   spec.summary       = %q{Adds live GUI queue/worker management to resque-pool}
-  spec.homepage      = "https://github.com/crazymykl/resque-pool-lifegaurd"
+  spec.homepage      = "https://github.com/crazymykl/resque-pool-lifeguard"
   spec.license       = "MIT"
 
   spec.required_ruby_version = '>= 2.0'

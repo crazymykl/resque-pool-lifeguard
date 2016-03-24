@@ -5,4 +5,4 @@ require 'fakeredis/rspec'
 require 'simplecov'
 SimpleCov.start
 
-require 'resque/pool/lifegaurd'
+require 'resque/pool/lifeguard'

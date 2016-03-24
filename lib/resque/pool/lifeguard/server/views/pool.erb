@@ -1,4 +1,4 @@
-<% pools = Resque::Pool::Lifegaurd.all_pools %>
+<% pools = Resque::Pool::Lifeguard.all_pools %>
 <% workers = Resque.workers.group_by { |w| [w.hostname, w.queues] } %>
 
 <style>
