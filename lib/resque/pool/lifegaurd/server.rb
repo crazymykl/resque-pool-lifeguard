@@ -1,8 +1,6 @@
 require 'resque/server'
 require 'resque/pool/lifegaurd'
 
-require 'pry'
-
 module Resque
   class Pool
     class Lifegaurd
