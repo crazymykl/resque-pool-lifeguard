@@ -9,6 +9,7 @@ namespace :resque do
     task :lifegaurd do
       defaults = FileOrHashLoader.new
       Resque::Pool.config_loader = Resque::Pool::Lifegaurd.new defaults: defaults
+      Resque::Pool.procline "Resque Pool Lifegaurd on Duty"
     end
 
     task setup: :lifegaurd

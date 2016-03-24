@@ -16,7 +16,7 @@ module Resque
             host, queues, count = params.values_at(*%i[host queues count])
 
             Lifegaurd.new(hostname: host)[queues] = Integer(count)
-            redirect :pools
+            redirect u :pools
           end
 
           app.get "/pools.poll" do
