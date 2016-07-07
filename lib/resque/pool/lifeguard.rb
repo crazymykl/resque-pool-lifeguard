@@ -4,6 +4,7 @@ require "resque/pool/lifeguard/version"
 module Resque
   class Pool
     class Lifeguard
+      include Logging
 
       def initialize hostname: Socket.gethostname, defaults: -> (env) { {} }
         @defaults = defaults
@@ -29,7 +30,7 @@ module Resque
       end
 
       def call env
-        values || set_defaults(env)
+        @values = values || set_defaults(env)
       end
 
       def reset!
@@ -41,6 +42,9 @@ module Resque
       rescue Resque::Helpers::DecodeException
         reset!
         nil
+      rescue Redis::TimeoutError, Redis::CannotConnectError
+        log "Could not get config from redis"
+        @values
       end
 
       def values= values
