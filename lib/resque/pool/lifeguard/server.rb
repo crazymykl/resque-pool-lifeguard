@@ -19,6 +19,13 @@ module Resque
             redirect u :pools
           end
 
+          app.post '/pools/:host/forget' do
+            host = params[:host]
+
+            Lifeguard.new(hostname: host).reset!
+            redirect u :pools
+          end
+
           app.get "/pools.poll" do
             content_type "text/plain"
             @polling = true
