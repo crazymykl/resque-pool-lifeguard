@@ -27,6 +27,14 @@ describe Resque::Pool::Lifeguard do
       expect(subject.values).to eq 'foo' => 1
     end
 
+    it 'returns the last known value if redis is down' do
+      known_values = subject.values
+
+      allow(Resque.redis).to receive(:hget).and_raise Redis::TimeoutError
+
+      expect(subject.values).to eq known_values
+    end
+
     it 'nukes invalid data' do
       Resque.redis.hset pool_key, host, "AWFUL WAFFLE"
 
@@ -85,6 +93,13 @@ describe Resque::Pool::Lifeguard do
       subject.class.reset!
 
       expect(subject.class.all_pools).to be_empty
+    end
+
+    it "resets empty pools, leaving populated ones alone" do
+      allow(Resque).to receive(:workers) { [double(hostname: 'blah')] }
+      subject.class.reset_empty!
+
+      expect(subject.class.all_pools).to eq "blah" => {"foo" => 5}
     end
 
     it "respects defaults when empty" do

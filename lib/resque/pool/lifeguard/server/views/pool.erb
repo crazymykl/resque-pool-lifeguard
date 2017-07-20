@@ -10,15 +10,32 @@
 form.queues input[type="number"] {
   width: 35px;
 }
+
+.batch.actions {
+  float: right;
+}
 </style>
 
 <h1 class='wi'>Worker Pools</h1>
+
+<div class='batch actions'>
+  <form class='forget all' action="<%= u '/pools/forget_all' %>" method="POST"
+    onsubmit='return confirm("This will forget all pools. Are you sure?")'>
+    <input type="submit" value="Forget All">
+  </form>
+
+  <form class='forget empty' action="<%= u '/pools/forget_empty' %>" method="POST"
+    onsubmit='return confirm("This will forget any pools with no workers. Are you sure?")'>
+    <input type="submit" value="Forget Empty">
+  </form>
+</div>
+
 <p class='intro'>The worker pools listed below are all registered as active on your system.</p>
 
 <% pools.each do |host, pool| %>
 <% if pools.length > 1 %>
 <h2 class='hostname'><%= host %>
-  <form class='forget host' action="<%= u "/pools/#{host}/forget" %>" method="POST">
+  <form class='forget host' action='<%= u "/pools/#{host}/forget" %>' method="POST">
     <input type="submit" value="Forget">
   </form>
 </h2>

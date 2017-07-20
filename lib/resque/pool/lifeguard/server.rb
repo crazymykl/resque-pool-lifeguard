@@ -12,6 +12,16 @@ module Resque
             pools_view
           end
 
+          app.post '/pools/forget_all' do
+            Lifeguard.reset!
+            redirect u :pools
+          end
+
+          app.post '/pools/forget_empty' do
+            Lifeguard.reset_empty!
+            redirect u :pools
+          end
+
           app.post '/pools/:host' do
             host, queues, count = params.values_at(*%i[host queues count])
 

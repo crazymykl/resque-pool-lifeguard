@@ -6,7 +6,7 @@ module Resque
     class Lifeguard
       include Logging
 
-      def initialize hostname: Socket.gethostname, defaults: -> (env) { {} }
+      def initialize hostname: Socket.gethostname, defaults: -> (_env) { {} }
         @defaults = defaults
         @hostname = hostname
       end
@@ -27,6 +27,14 @@ module Resque
 
       def self.reset!
         Resque.redis.del pool_key
+      end
+
+      def self.reset_empty!
+        used_hosts = Resque.workers.map(&:hostname).uniq
+
+        (all_pools.keys - used_hosts).each do |host|
+          new(hostname: host).reset!
+        end
       end
 
       def call env
