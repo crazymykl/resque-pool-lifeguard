@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Resque::Pool::Lifeguard do
 
   before :each do
-    Resque.redis.flushall
+    Resque.redis.redis.flushall
   end
 
   let(:host) { Socket.gethostname }
