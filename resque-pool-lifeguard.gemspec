@@ -13,18 +13,18 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/crazymykl/resque-pool-lifeguard"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = '>= 2.0'
+  spec.required_ruby_version = '>= 3.1.0'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "resque", "~> 1.22"
-  spec.add_dependency "resque-pool", "~> 0.6.0"
+  spec.add_dependency "resque", "~> 2.4.0"
+  spec.add_dependency "resque-pool", "~> 0.7.1"
   spec.add_dependency "rake"
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "simplecov", "~> 0.16.1"
-  spec.add_development_dependency "fakeredis", "~> 0.7.0"
+  spec.add_development_dependency "bundler", "~> 2.3.19"
+  spec.add_development_dependency "rspec", "~> 3.11.0"
+  spec.add_development_dependency "simplecov", "~> 0.21.2"
+  spec.add_development_dependency "fakeredis", "~> 0.1.4"
 end

@@ -1,5 +1,5 @@
 require 'resque/pool'
-require "resque/pool/lifeguard/version"
+require 'resque/pool/lifeguard/version'
 
 module Resque
   class Pool
@@ -72,6 +72,7 @@ module Resque
       end
 
       private
+
       attr_reader :defaults
       attr_reader :hostname
 
